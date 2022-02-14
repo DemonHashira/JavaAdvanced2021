@@ -6,12 +6,22 @@ import org.springframework.data.annotation.Id;
 public class Project {
 
     @Id
+    private Long id;
     private String name;
-    private Department department;
+    private Department projectDepartment;
 
-    public Project(String name, Department department) {
+    public Project(Long id, String name, Department department) {
+        this.id = id;
         this.name = name;
-        this.department = department;
+        this.projectDepartment = department;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,18 +33,18 @@ public class Project {
     }
 
     public Department getDepartment() {
-        return department;
+        return projectDepartment;
     }
 
     public void setDepartment(Department department) {
-        this.department = department;
+        this.projectDepartment = department;
     }
 
     @Override
     public String toString() {
         return "Project{" +
                 "name='" + name + '\'' +
-                ", department=" + department +
+                ", department=" + projectDepartment +
                 '}';
     }
 }

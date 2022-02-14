@@ -1,6 +1,6 @@
 package com.example.FinalProjectJavaAdvanced.advice;
 
-import com.example.FinalProjectJavaAdvanced.exception.UserDoesNotExist;
+import com.example.FinalProjectJavaAdvanced.exception.EntityDoesNotExist;
 import com.example.FinalProjectJavaAdvanced.exception.WrongArguments;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,10 +16,10 @@ public class ExceptionControllerAdvice {
                 .body("This is a wrong argument!");
     }
 
-    @ExceptionHandler(UserDoesNotExist.class)
-    public ResponseEntity<String> exceptionUserDoesNotExist(){
+    @ExceptionHandler(EntityDoesNotExist.class)
+    public ResponseEntity<String> exceptionEntityDoesNotExist(){
         return ResponseEntity
                 .badRequest()
-                .body("This is body message of the UserDoesNotExist exception");
+                .body("Entity does not exist");
     }
 }

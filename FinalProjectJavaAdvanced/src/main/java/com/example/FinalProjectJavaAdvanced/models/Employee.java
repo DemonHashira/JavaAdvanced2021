@@ -5,18 +5,28 @@ import org.springframework.data.annotation.Id;
 public class Employee {
 
     @Id
+    private Long id;
     private String name;
     private String lastName;
     private String address;
     private int salary;
-    private Department department;
+    private Department employeeDepartment;
 
-    public Employee(String name, String lastName, String address, int salary, Department department) {
+    public Employee(Long id, String name, String lastName, String address, int salary, Department department) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
         this.salary = salary;
-        this.department = department;
+        this.employeeDepartment = department;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,11 +62,11 @@ public class Employee {
     }
 
     public Department getDepartment() {
-        return department;
+        return employeeDepartment;
     }
 
     public void setDepartment(Department department) {
-        this.department = department;
+        this.employeeDepartment = department;
     }
 
     @Override
@@ -66,7 +76,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
-                ", department=" + department +
+                ", department=" + employeeDepartment +
                 '}';
     }
 }
