@@ -2,9 +2,7 @@ package com.example.FinalProjectJavaAdvanced.services;
 
 import com.example.FinalProjectJavaAdvanced.exception.EntityDoesNotExist;
 import com.example.FinalProjectJavaAdvanced.exception.WrongArguments;
-import com.example.FinalProjectJavaAdvanced.models.Authorities;
 import com.example.FinalProjectJavaAdvanced.models.Department;
-import com.example.FinalProjectJavaAdvanced.repositories.AuthoritiesRepository;
 import com.example.FinalProjectJavaAdvanced.repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +19,6 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    @Autowired
-    AuthoritiesRepository authoritiesRepository;
-
     public Iterable<Department> findAll() {
         return departmentRepository.findAll();
     }
@@ -32,8 +27,6 @@ public class DepartmentService {
         if (department.getName() == null || department.getName().isBlank()) {
             throw new WrongArguments();
         }
-        Authorities authorities= new Authorities(department.getName(),"read");
-        authoritiesRepository.save(authorities);
         return departmentRepository.save(department);
     }
 
